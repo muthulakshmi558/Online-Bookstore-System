@@ -1,0 +1,22 @@
+{% extends "bookstoreapp/Layout/base.html" %}
+
+{% block title %}Books in {{ category.name }}{% endblock %}
+
+{% block content %}
+  <h1 class="text-center text-success mb-4">Books in "{{ category.name }}"</h1>
+  <div class="row">
+    {% for book in books %}
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text">Author: {{ book.author.name }}</p>
+            <p class="card-text">Price: ₹{{ book.price }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-danger">No books found in this category.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
